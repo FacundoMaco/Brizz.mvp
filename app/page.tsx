@@ -83,14 +83,91 @@ const GARANTIA_TXT =
   "Cambios dentro de 7 días si presenta falla de fábrica.";
 const POLITICA_TXT =
   "Pedido sujeto a verificación de stock. Mantener alejado de menores.";
+const QUICK_METRICS = [
+  {
+    headline: "0% nicotina",
+    description: "Aromas botánicos fríos, sin químicos estimulantes."
+  },
+  {
+    headline: "80 inhalaciones",
+    description: "Cada cápsula rinde una semana de ritual consciente."
+  },
+  {
+    headline: "Entrega 24h",
+    description: "Courier premium en Lima con confirmación en WhatsApp."
+  }
+];
+
+const DECISION_CARDS = [
+  {
+    title: "Lo que recibes ya dispuesto",
+    points: [
+      "Dispositivo reutilizable en madera + metal.",
+      "3 cápsulas naturales con sabores rotativos de cortesía.",
+      "Guía digital + concierge para reposiciones en minutos."
+    ]
+  },
+  {
+    title: "Por qué se siente distinto",
+    points: [
+      "Respiración fría sin baterías ni humo.",
+      "Diseño editorial que replica el ritual clásico.",
+      "Blend botánico premium creado en Lima."
+    ]
+  },
+  {
+    title: "Úsalo si buscas",
+    points: [
+      "Cambiar el hábito sin nicotina.",
+      "Experiencia portátil sin olor ni residuos.",
+      "Regalar un dispositivo wellness de alta gama."
+    ]
+  }
+];
+
+const HOW_IT_WORKS_STEPS = [
+  {
+    title: "Rompe la punta del sabor",
+    description:
+      "Abre una cápsula y quiebra suavemente la punta sellada para liberar el aceite aromático antes de insertarla."
+  },
+  {
+    title: "Inserta y fija la cápsula",
+    description:
+      "Desliza la cápsula hasta escuchar el clic. El flujo de aire se infusiona al instante sin requerir carga."
+  },
+  {
+    title: "Respira y alterna sabores",
+    description:
+      "Inhala durante 3 segundos y exhala lento. Cambia de cápsula cuando quieras otra nota aromática."
+  }
+];
+
+const TRUST_BADGES = [
+  {
+    label: "1,200+",
+    description: "Personas en Lima ya respiran con Briz."
+  },
+  {
+    label: "4.9/5",
+    description: "Puntaje promedio en reseñas verificadas."
+  },
+  {
+    label: "24/7",
+    description: "Concierge activo para soporte y reposiciones."
+  }
+];
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col bg-white text-slate-900">
+      <AnnouncementBar />
       <HeroSection />
+      <QuickMetricsSection />
+      <DecisionSection />
       <BenefitsSection />
-      <HowItWorksSection />
       <TestimonialsSection />
+      <HowItWorksSection />
       <CheckoutSection />
       <GuaranteeSection />
       <FAQSection />
@@ -99,9 +176,22 @@ export default function Page() {
   );
 }
 
+function AnnouncementBar() {
+  return (
+    <aside className="border-b border-white/10 bg-breeze-dark text-white">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 sm:px-6 lg:px-8">
+        <span className="rounded-full bg-breeze-teal/20 px-3 py-1 text-[10px] text-breeze-teal">
+          Entrega 24h Lima
+        </span>
+        <span>Compra segura por WhatsApp · Garantía 7 días</span>
+      </div>
+    </aside>
+  );
+}
+
 function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-breeze-dark via-breeze-blue to-black px-4 pb-28 pt-36 text-white sm:px-6 lg:px-8">
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-breeze-dark via-breeze-blue to-black px-4 pb-28 pt-28 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0">
         <div className="absolute -top-24 right-24 h-96 w-96 rounded-full bg-breeze-teal/35 blur-3xl" />
         <div className="absolute bottom-[-8rem] left-10 h-[28rem] w-[28rem] rounded-full bg-breeze-lime/25 blur-3xl" />
@@ -110,19 +200,23 @@ function HeroSection() {
       </div>
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col justify-center gap-10">
-          <div className="inline-flex max-w-max items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-200/80 shadow-lg shadow-black/20 backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-breeze-teal" />
-            Edición Lima 2024
+          <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-200/80">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 shadow-lg shadow-black/20 backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-breeze-teal" />
+              Edición Lima 2024
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] tracking-[0.4em] text-slate-200/70 shadow shadow-black/15">
+              Respira limpio · sin nicotina
+            </span>
           </div>
           <div className="space-y-6">
             <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-              Healthier than breathing.
+              Tu ritual premium sin nicotina empieza hoy.
             </h1>
             <p className="max-w-2xl text-lg text-slate-200 sm:text-xl lg:text-[1.35rem]">
-              Siente el ritual, no el daño. Briz es la experiencia premium de
-              respiración con aromas 100% naturales, cero nicotina y sin necesidad
-              de carga. Inspirado en dispositivos artesanales de madera y metal,
-              llega listo para usarse desde el primer respiro.
+              Siente la gestualidad clásica con beneficio limpio. Briz fusiona
+              madera + metal con blends botánicos para darte aroma, calma y cero
+              humo desde el primer respiro.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-[auto_auto] sm:items-center">
@@ -149,28 +243,6 @@ function HeroSection() {
               </Link>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-6 rounded-3xl border border-white/10 bg-white/10 p-6 text-sm text-slate-200 shadow-lg shadow-black/15 backdrop-blur">
-            <div className="flex items-center gap-3">
-              <span className="h-10 w-10 rounded-full bg-breeze-teal/30" />
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-300">
-                  Sin baterías
-                </p>
-                <p className="text-base font-semibold text-white">
-                  Actívalo en segundos, sin cables ni recargas.
-                </p>
-              </div>
-            </div>
-            <div className="hidden h-12 w-px bg-white/10 sm:block" />
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-300">
-                Incluye
-              </p>
-              <p className="text-base font-semibold">
-                Dispositivo Briz · +3 sabores de regalo · Habit tracker digital
-              </p>
-            </div>
-          </div>
           <ul className="grid gap-3 text-sm text-slate-200/90 sm:grid-cols-3">
             {PRODUCT_BENEFICIOS.map((benefit) => (
               <li
@@ -192,8 +264,8 @@ function HeroSection() {
                 alt="Dispositivo Briz en mesa minimalista"
                 fill
                 priority
-              sizes="(min-width: 1024px) 360px, (min-width: 640px) 60vw, 90vw"
-              className="object-cover"
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 60vw, 90vw"
+                className="object-cover"
               />
             </div>
             <div className="grid gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 text-sm text-slate-100 shadow-xl shadow-black/20 backdrop-blur">
@@ -207,7 +279,7 @@ function HeroSection() {
               </div>
               <p className="text-base font-semibold">
                 “Una inhalación suave, sabores contundentes y cero irritación. Briz
-              redefine el ritual con placer limpio.”
+                redefine el ritual con placer limpio.”
               </p>
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span>Curado por Briz Labs</span>
@@ -215,6 +287,72 @@ function HeroSection() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QuickMetricsSection() {
+  return (
+    <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-slate-200/70 bg-white/90 p-8 shadow-[0_35px_80px_-45px_rgba(15,23,42,0.45)] backdrop-blur">
+        <p className="text-xs uppercase tracking-[0.3em] text-breeze-teal">
+          Evalúalo en 10 segundos
+        </p>
+        <ul className="mt-6 grid gap-6 sm:grid-cols-3">
+          {QUICK_METRICS.map(({ headline, description }) => (
+            <li
+              key={headline}
+              className="group rounded-[1.75rem] border border-slate-200/60 bg-white/90 p-6 shadow-sm shadow-breeze-blue/10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_25px_70px_-40px_rgba(15,23,42,0.45)]"
+            >
+              <p className="text-sm font-semibold text-breeze-blue">{headline}</p>
+              <p className="mt-2 text-sm text-slate-600">{description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function DecisionSection() {
+  return (
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-gradient-to-b from-breeze-lime/8 via-white to-white" />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.35em] text-breeze-teal/90">
+            Evalúa rápido
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold text-breeze-blue sm:text-4xl">
+            Todo lo que necesitas saber antes de comprar en un vistazo.
+          </h2>
+          <p className="mt-4 text-lg text-slate-600">
+            Define si Briz es para ti en menos de un minuto: revisa qué incluye,
+            qué lo hace único y en qué casos encaja perfecto.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {DECISION_CARDS.map(({ title, points }) => (
+            <article
+              key={title}
+              className="relative flex h-full flex-col gap-5 rounded-[2.25rem] border border-slate-200/70 bg-white/95 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_-50px_rgba(15,23,42,0.5)]"
+            >
+              <div className="absolute -top-24 right-0 h-44 w-44 rounded-full bg-breeze-teal/12 blur-3xl" />
+              <h3 className="relative text-lg font-semibold text-breeze-blue">
+                {title}
+              </h3>
+              <ul className="relative space-y-3 text-sm text-slate-600">
+                {points.map((point) => (
+                  <li key={point} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-breeze-teal" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -248,7 +386,6 @@ function BenefitsSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-breeze-lime/0 opacity-0 transition group-hover:opacity-80" />
               <div className="relative flex h-full flex-col gap-4">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-breeze-teal/15 text-breeze-teal">
-                  {/* placeholder icon */}
                   <span className="h-6 w-6 rounded-full border border-breeze-teal/60" />
                 </span>
                 <h3 className="text-lg font-semibold text-breeze-blue">
@@ -259,6 +396,57 @@ function BenefitsSection() {
                 </p>
               </div>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-breeze-lime/7 to-white px-4 py-24 sm:px-6 lg:px-8">
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-breeze-teal/15 to-transparent" />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.35em] text-breeze-teal/90">
+            Testimonios reales
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold text-breeze-blue sm:text-4xl">
+            Ritual aprobado por la comunidad Briz.
+          </h2>
+          <p className="mt-4 text-lg text-slate-600">
+            Sumamos feedback todas las semanas para que migrar a una alternativa
+            sin nicotina sea fácil, sensorial y premium.
+          </p>
+        </div>
+        <ul className="mt-10 flex flex-wrap gap-4 text-sm text-breeze-teal">
+          {TRUST_BADGES.map(({ label, description }) => (
+            <li
+              key={label}
+              className="rounded-full border border-breeze-teal/25 bg-breeze-teal/10 px-4 py-2 font-semibold text-breeze-blue"
+            >
+              <span className="text-breeze-teal">{label}</span> · {description}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {TESTIMONIOS.map(({ nombre, cita }) => (
+            <figure
+              key={nombre}
+              className="group relative h-full overflow-hidden rounded-[2.5rem] border border-slate-200/60 bg-white/85 p-6 shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)] backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_80px_-40px_rgba(15,23,42,0.45)] lg:p-8"
+            >
+              <div className="absolute -top-24 right-0 h-40 w-40 rounded-full bg-breeze-teal/15 blur-3xl transition group-hover:bg-breeze-teal/25" />
+              <blockquote className="relative text-base text-slate-600">
+                “{cita}”
+              </blockquote>
+              <figcaption className="relative mt-6 flex items-center justify-between text-sm font-semibold text-breeze-blue">
+                <span>{nombre}</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-breeze-teal">
+                  Lima · Perú
+                </span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
@@ -277,41 +465,28 @@ function HowItWorksSection() {
               Cómo funciona
             </p>
             <h2 className="text-3xl font-semibold text-breeze-blue sm:text-4xl">
-              Pide Briz en tres pasos diseñados para ser effortless.
+              Usa Briz en tres pasos diseñados para ser effortless.
             </h2>
             <p className="max-w-xl text-lg text-slate-600">
-              Nuestro concierge te acompaña en todo el proceso: selecciona tu
-              pack, activa el aroma y disfruta respiraciones profundas sin baterías.
+              En tu primer pedido llega todo listo para que respires sin batería
+              ni cables. Solo sigue estos pasos cuando recibas tus cápsulas.
             </p>
-            <ol className="relative space-y-8 border-l border-breeze-teal/30 pl-8">
-              {[
-                {
-                  title: "Rompe la punta del sabor",
-                  description:
-                    "Abre una cápsula y quiebra suavemente la punta sellada para liberar el aceite aromático."
-                },
-                {
-                  title: "Inserta y fija la cápsula",
-                  description:
-                    "Desliza la cápsula dentro de Briz hasta escuchar el clic. El flujo de aire se infusiona al instante."
-                },
-                {
-                  title: "Respira y alterna sabores",
-                  description:
-                    "Inhala durante 3 segundos y exhala lentamente. Cambia de cápsula cuando quieras otra nota aromática."
-                }
-              ].map(({ title, description }, index) => (
-                <li key={title} className="relative">
-                  <span className="absolute -left-[37px] top-1 flex h-6 w-6 items-center justify-center rounded-full border border-breeze-teal/50 bg-white text-xs font-semibold text-breeze-blue">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {HOW_IT_WORKS_STEPS.map(({ title, description }, index) => (
+                <article
+                  key={title}
+                  className="relative flex h-full flex-col gap-4 rounded-[2rem] border border-breeze-teal/15 bg-white/90 p-6 shadow-[0_25px_70px_-45px_rgba(20,184,166,0.35)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_90px_-50px_rgba(20,184,166,0.4)]"
+                >
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-breeze-teal/30 bg-breeze-teal/10 text-sm font-semibold text-breeze-blue">
                     {index + 1}
                   </span>
-                  <h3 className="text-lg font-semibold text-breeze-blue">
+                  <h3 className="text-base font-semibold text-breeze-blue">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">{description}</p>
-                </li>
+                  <p className="text-sm text-slate-600">{description}</p>
+                </article>
               ))}
-            </ol>
+            </div>
           </div>
           <div className="grid gap-4">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] border border-breeze-teal/10 bg-white/60 shadow-[0_40px_120px_-35px_rgba(20,184,166,0.35)]">
@@ -364,47 +539,6 @@ function HowItWorksSection() {
   );
 }
 
-function TestimonialsSection() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-breeze-lime/7 to-white px-4 py-24 sm:px-6 lg:px-8">
-      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-breeze-teal/15 to-transparent" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.35em] text-breeze-teal/90">
-            Testimonios
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-breeze-blue sm:text-4xl">
-            Rituales reales, reseñas que validan la experiencia Briz.
-          </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Más de 1,200 usuarios en Lima ya cambiaron su hábito sin nicotina. Esto
-            dicen sobre su primera semana con Briz.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TESTIMONIOS.map(({ nombre, cita }) => (
-            <figure
-              key={nombre}
-              className="group relative h-full overflow-hidden rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-6 shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)] backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_80px_-40px_rgba(15,23,42,0.45)] lg:p-8"
-            >
-              <div className="absolute -top-24 right-0 h-40 w-40 rounded-full bg-breeze-teal/15 blur-3xl transition group-hover:bg-breeze-teal/25" />
-              <blockquote className="relative text-base text-slate-600">
-                “{cita}”
-              </blockquote>
-              <figcaption className="relative mt-6 flex items-center justify-between text-sm font-semibold text-breeze-blue">
-                <span>{nombre}</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-breeze-teal">
-                  Lima · Perú
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function CheckoutSection() {
   const checkoutHighlights = [
     {
@@ -419,7 +553,7 @@ function CheckoutSection() {
     },
     {
       title: "Atención 24/7",
-        description:
+      description:
         "El equipo Briz responde cualquier consulta técnica o de uso en minutos."
     },
     {
